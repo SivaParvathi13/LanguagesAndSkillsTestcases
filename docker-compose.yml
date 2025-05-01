@@ -1,0 +1,28 @@
+version: '3.8'  # Specify the version of Docker Compose
+
+services:
+  app:
+    image: parvathi  # Replace with your Docker image name
+    build:
+      context: .  # Use the current directory as the build context
+      dockerfile: Dockerfile  # Specify the Dockerfile if needed
+    ports:
+      - "5003:5003"  # Map the container's port to the host
+    volumes:
+      - .:/app  # Mount the current directory to /app in the container
+    environment:
+      - ENV_VAR=your-value  # Add any environment variables your app needs
+
+  # Add other services like databases if needed
+  # Example for a database service:
+  # db:
+  #   image: postgres
+  #   environment:
+  #     POSTGRES_USER: user
+  #     POSTGRES_PASSWORD: password
+  #     POSTGRES_DB: your-db-name
+  #   volumes:
+  #     - db-data:/var/lib/postgresql/data
+
+volumes:
+  # db-data:  # Uncomment if using a database service
